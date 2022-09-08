@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../static/css/styles.css">
+<title>Car Inventory App</title>
+</head>
+<body>
+    <div class="nav-bar">
+        <section>
+            <a href="{{ url_for('site.home') }}" class="nav-brand">Car Inventory App</a>
+            {% include 'logo.html' %}
+        </section>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('site.home') }}" class="nav-item">Home</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('site.profile') }}" class="nav-item">Profile</a></li>
+            <li><a href="{{ url_for('auth.logout') }}" class="nav-item">Sign Out</a></li>
+            {% else %}
+            <li><a href="{{ url_for('auth.signin') }}" class="nav-item">Sign In</a></li>
+            <li><a href="{{ url_for('auth.signup') }}" class="nav-item">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+{% block content %}
+{% endblock %}
+<footer>&copy;Jeff Thomas 2022</footer>
+</body>
+</html>

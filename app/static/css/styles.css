@@ -1,0 +1,140 @@
+:root{
+    --dark:96, 64, 128;
+    --medium:144, 96, 192;
+    --light:192,128,255;
+    --bright:255, 255, 255;
+}
+
+*{
+    box-sizing:border-box;
+    padding:0px;
+    margin:0px;
+
+    /* border:1px solid red; */
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 200,
+  'GRAD' 200,
+  'opsz' 12;
+  font-size:1em;
+}
+
+.sub{
+    vertical-align:text-bottom;
+}
+
+
+body{
+    /* Font*/
+    /* font-family:'Raleway', sans-serif; */
+    color:rgb(var(--bright));
+
+    /* Background*/
+    background-color: rgb(var(--medium));
+
+    /* Grid */
+    display:grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 'navbar' 'main' 'foot';
+    align-items:center;
+    justify-items:center;
+
+    height:100vh;
+    width:100vw;
+    min-width:320px;
+}
+
+a{
+    text-decoration:none;
+    color:rgb(var(--light));
+}
+
+a:hover{
+    color:rgb(var(--bright));
+}
+
+.nav-bar{
+    grid-area:'navbar';
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    align-self:start;
+    background-color:rgb(var(--dark));
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(0,0,0,0) 8px),
+                      linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0) 8px);
+    color:rgb(var(--bright));
+    width:100%;
+    padding:0px 10px;
+}
+
+.nav-brand{
+    font-size:24px;
+    font-weight:lighter;
+    line-height:40px;
+    text-decoration:none;
+    color:rgb(var(--bright));
+}
+
+.nav-logo{
+    height:15px;
+    width:auto;
+    fill:rgb(var(--light))
+}
+
+.nav-list{
+    display:flex;
+    justify-content:space-around;
+    list-style-type: none;
+    font-family:'Raleway', sans-serif;
+    margin:10px 0px;
+}
+
+.nav-item{
+    padding:0px 20px;
+    height:20px;
+    line-height:20px;
+}
+
+main{
+    grid-area:'main';
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    height:100%;
+    width:100%;
+    overflow:auto;
+    align-items:center;
+    justify-items:center;
+}
+
+.img-div img{
+    width:80%;
+    margin:auto;
+}
+
+.img-div{
+    display:flex;
+    align-items:center;
+    justify-items:center;
+}
+
+.txt-div{
+    display:grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    height:100%;
+    align-items:center;
+    justify-items:center;
+}
+
+@media screen and (max-width:600px){
+
+    .nav-bar{
+        flex-direction:column;
+    }
+
+    .nav-list{
+        margin-top:0;
+    }
+}

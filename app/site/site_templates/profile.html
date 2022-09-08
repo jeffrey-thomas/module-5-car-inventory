@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+<main>
+    <section>
+        <h3>
+            Here are your profile details:
+        </h3>
+        <ul>
+            <li>Email: {{current_user.email}}</li>
+            <li>Token: {{current_user.token}}</li>
+        </ul>
+    </section>
+    <section>
+        <h1>{{ current_user.email}}'s Profile</h1>
+    </section>
+    
+</main>
+{% endblock %}
