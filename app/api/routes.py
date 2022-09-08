@@ -39,7 +39,7 @@ def get_car(current_user_token):
 def get_single_car(current_user_token,id):
     car = Car.query.get(id)
     response = car_schema.dump(car)
-    jsonify(response)
+    return jsonify(response)
 
 #Update
 @api.route('/cars/<id>',methods=["POST", "PUT"])
