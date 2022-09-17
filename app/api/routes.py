@@ -11,7 +11,7 @@ def preflight(current_user_token):
     response.headers.add('Access-Control-Allow-Origin','*')
     response.headers.add('Access-Control-Allow-Headers','Content-Type, x-access-token')
     response.headers.add('Access-Control-Allow-Methods','POST, GET, OPTIONS, DELETE')
-
+    response.status_code = 200
 
 # Create
 @api.route('/cars',methods=['POST'])
