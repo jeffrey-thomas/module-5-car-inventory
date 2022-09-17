@@ -5,7 +5,6 @@ from models import CarSchema, db, User, Car, car_schema, cars_schema
 api = Blueprint('api',__name__,url_prefix='/api')
 
 @api.route('/cars', methods=['OPTIONS'])
-@token_required
 def preflight(current_user_token):
     response = Response()
     response.headers.add('Access-Control-Allow-Origin','*')
