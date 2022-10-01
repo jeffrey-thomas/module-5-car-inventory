@@ -13,7 +13,7 @@ def token_required(our_flask_function):
         res = 'Headers: '
         for key in request.headers:
             res = res + str(request.headers[key])+" / "
-        return jsonify({'request':res})
+        return jsonify({'request':'res'})
 
         if 'Content-Type' in request.headers:
             return jsonify({'a':str(request.headers['Content-Type'])})
