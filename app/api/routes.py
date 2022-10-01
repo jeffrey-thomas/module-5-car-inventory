@@ -41,7 +41,6 @@ def get_car(current_user_token):
     collector = current_user_token.token
     cars = Car.query.filter_by(user_token = collector).all()
     response = jsonify(cars_schema.dump(cars))
-    response.headers.add('Access-Control-Allow-Origin','*')
     return response
 
 @api.route('/cars/<id>',methods=['GET'])
