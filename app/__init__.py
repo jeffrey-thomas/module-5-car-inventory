@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 
 
-cors = CORS(app, origins=['https://ct-car-inv-project.web.app/'])
+cors = CORS(app)
 
 app.register_blueprint(site)
 app.register_blueprint(auth)
