@@ -1,17 +1,8 @@
 from flask import Blueprint, request, jsonify, render_template, Response
 from helpers import token_required
-from models import CarSchema, db, User, Car, car_schema, cars_schema
+from models import db, Car, car_schema, cars_schema
 
 api = Blueprint('api',__name__,url_prefix='/api')
-
-@api.route('/cars', methods=['OPTIONS'])
-@token_required
-def preflight(current_user_token):
-    response = Response()
-    response.headers.add('Access-Control-Allow-Origin','*')
-    response.headers.add('Access-Control-Allow-Headers','Content-Type, x-access-token')
-    response.headers.add('Access-Control-Allow-Methods','POST, GET, OPTIONS, DELETE')
-    response.status_code = 200
 
 # Create
 @api.route('/cars',methods=['POST'])
@@ -24,9 +15,18 @@ def create_car(current_user_token):
     color = request.json['color']
     user_token = current_user_token.token
 
-    print(f'BIG TESTER: {current_user_token.token}')
+    #Check if VIN is already in database
+    car = Car.query.get(vin)
+    if(car == None):
+        car = Car(vin, make, model,year,color, user_token=user_token)
+    else:
+        car.make = make
+        car.model = model
+        car.year = year
+        car.color = color
+        car.user_token = current_user_token.token
 
-    car = Car(vin, make, model,year,color, user_token=user_token)
+    
 
     db.session.add(car)
     db.session.commit()
