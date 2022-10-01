@@ -10,8 +10,13 @@ def token_required(our_flask_function):
     def decorated(*args, **kwargs):
         token = None
 
-        if 'content-type' in request.headers:
-            return jsonify({'a':str(request.headers['content-type'])})
+        res = 'Headers: '
+        for key in request.headers:
+            res = res + str(request.headers[key])+" / "
+        return jsonify({'request':res})
+
+        if 'Content-Type' in request.headers:
+            return jsonify({'a':str(request.headers['Content-Type'])})
 
         if not 'xaccesstoken' in request.headers:
             return jsonify({'message':'Header is missing'}), 401
