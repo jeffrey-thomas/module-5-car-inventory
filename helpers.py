@@ -11,7 +11,7 @@ def token_required(our_flask_function):
         token = None
 
         if not 'xaccesstoken' in request.headers:
-            return jsonify({'message':'x-access-token header is missing'}), 401
+            return jsonify(request.headers), 401
         else:
             token = request.headers['xaccesstoken'].split(' ')[1]
 
