@@ -36,7 +36,7 @@ def create_car(current_user_token):
 
 #Read
 @api.route('/cars',methods=['GET'])
-@token_required
+#@token_required
 def get_car(current_user_token):
     collector = current_user_token.token
     cars = Car.query.filter_by(user_token = collector).all()
