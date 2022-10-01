@@ -12,8 +12,7 @@ from helpers import JSONEncoder
 
 app = Flask(__name__)
 
-app.json_encoder = JSONEncoder
-app.config.from_object(Config)
+
 
 cors = CORS(app, origins=['https://ct-car-inv-project.web.app/'])
 
@@ -21,7 +20,8 @@ app.register_blueprint(site)
 app.register_blueprint(auth)
 app.register_blueprint(api)
 
-
+app.json_encoder = JSONEncoder
+app.config.from_object(Config)
 root_db.init_app(app)
 login_manager.init_app(app)
 ma.init_app(app)
